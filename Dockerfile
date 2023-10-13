@@ -2,17 +2,6 @@ FROM ubuntu:latest AS build
 
 RUN apt-get update
 
-
-RUN apt-get install wget
-RUN wget https://download.java.net/java/early_access/jdk21/28/GPL/openjdk-21-ea+xx_linux-x64_bin.tar.gz
-RUN tar -xvf openjdk-21-ea+28_linux-x64_bin.tar.gz
-RUN cd jdk-21
-RUN sudo mkdir -p /usr/local/jdk-21
-RUN sudo mv * /usr/local/jdk-21
-RUN echo "export JAVA_HOME=/usr/local/jdk-21" >> ~/.bashrc
-RUN echo "export PATH=$JAVA_HOME/jdk-21/bin" >> ~/.bashrc
-RUN source ~/.bashrc
-
 COPY . .
 
 RUN apt-get install maven -y
