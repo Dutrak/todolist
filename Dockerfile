@@ -2,12 +2,11 @@ FROM ubuntu:latest AS build
 
 RUN apt-get update
 
-COPY . .
+FROM openjdk:21-jdk
 
 RUN apt-get install maven -y
 RUN mvn clean install
 
-FROM openjdk:21-jdk
 EXPOSE 8080
 
 COPY --from=build /target/todolist-1.0.0.jar app.jar
