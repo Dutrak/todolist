@@ -2,7 +2,6 @@ FROM ubuntu:latest AS build
 
 FROM openjdk:21-jdk
 
-RUN apt-get update
 RUN apt install maven -y
 RUN mvn clean install
 
